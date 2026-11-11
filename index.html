@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#14181c">
+  <meta name="description" content="Explora la colección de jeans, camisas y chaquetas de Trama. Arma tu carrito y coordina tu pedido por WhatsApp.">
+  <title>Trama — Denim y ropa casual</title>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Ir al contenido</a>
+  <div class="utility"><div class="wrap">Pedidos por WhatsApp <span aria-hidden="true">·</span> Envíos por coordinar</div></div>
+  <header class="header" id="inicio">
+    <div class="wrap header-inner">
+      <a class="wordmark" href="#inicio" data-brand>Trama</a>
+      <nav class="nav" aria-label="Principal">
+        <a href="#catalogo">Colección</a>
+        <a href="#catalogo" data-jeans>Jeans</a>
+        <a href="#envios">Envíos y ayuda</a>
+      </nav>
+      <button type="button" class="cart-trigger" id="cart-trigger" aria-haspopup="dialog">
+        <span class="bag-icon" aria-hidden="true"></span>
+        <span>Carrito</span>
+        <span class="cart-count" id="cart-count">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-media"><img id="hero-image" alt="" fetchpriority="high"></div>
+      <div class="wrap hero-inner">
+        <p class="eyebrow" id="hero-kicker">Denim y ropa casual</p>
+        <h1 id="hero-title">Denim en<br><em>movimiento.</em></h1>
+        <p class="hero-description" id="hero-description">Cortes rectos, siluetas amplias y capas para la ciudad.</p>
+        <a class="button button-primary" href="#catalogo">Explorar colección <span aria-hidden="true">↗</span></a>
+      </div>
+      <a class="hero-credit" id="hero-credit" href="#catalogo"></a>
+    </section>
+
+    <section class="wrap catalog section" id="catalogo" aria-labelledby="catalog-title">
+      <div class="section-heading">
+        <h2 id="catalog-title">Explora la colección</h2>
+        <p id="catalog-count" role="status"></p>
+      </div>
+      <div class="catalog-tools">
+        <div id="category-filters" class="filters" role="group" aria-label="Filtrar por categoría"></div>
+        <div class="cut-field" id="cut-field" hidden>
+          <label for="cut-filter">Corte</label>
+          <select id="cut-filter"></select>
+        </div>
+      </div>
+      <div id="products" class="products"></div>
+      <div class="catalog-more"><button type="button" id="show-more" class="button button-secondary" hidden>Ver más prendas <span aria-hidden="true">↓</span></button></div>
+      <noscript><p>Activa JavaScript para explorar el catálogo y usar el carrito.</p></noscript>
+    </section>
+
+    <section class="reviews section" aria-labelledby="reviews-title">
+      <div class="wrap">
+        <div class="section-heading"><h2 id="reviews-title">Opiniones</h2><p id="reviews-note"></p></div>
+        <div class="review-grid" id="reviews"></div>
+      </div>
+    </section>
+
+    <section class="wrap help section" id="envios" aria-labelledby="help-title">
+      <div>
+        <h2 id="help-title">Envíos y ayuda</h2>
+        <p id="shipping-summary"></p>
+        <a class="text-link" data-whatsapp target="_blank" rel="noopener noreferrer">Consultar por WhatsApp <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="faq" id="faq"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div><a class="wordmark" href="#inicio" data-brand>Trama</a><p id="footer-description"></p></div>
+      <div><h2>Contacto</h2><ul id="contacts"></ul></div>
+      <div id="social-section" hidden><h2>Redes sociales</h2><ul id="socials"></ul></div>
+      <a class="text-link" href="#inicio">Volver arriba <span aria-hidden="true">↑</span></a>
+    </div>
+  </footer>
+
+  <dialog class="dialog detail-dialog" id="detail-dialog" aria-labelledby="detail-title">
+    <div class="dialog-bar">
+      <p class="eyebrow">Detalle de la prenda</p>
+      <form method="dialog"><button type="submit" class="icon-button" aria-label="Cerrar detalle" autofocus>×</button></form>
+    </div>
+    <div id="detail-content"></div>
+  </dialog>
+
+  <dialog class="dialog cart-dialog" id="cart-dialog" aria-labelledby="cart-title">
+    <div class="dialog-bar">
+      <h2 id="cart-title">Tu carrito</h2>
+      <form method="dialog"><button type="submit" class="icon-button" aria-label="Cerrar carrito" autofocus>×</button></form>
+    </div>
+    <div class="cart-content" id="cart-content"></div>
+  </dialog>
+
+  <dialog class="dialog checkout-dialog" id="checkout-dialog" aria-labelledby="checkout-title">
+    <div class="dialog-bar">
+      <h2 id="checkout-title">Datos del pedido</h2>
+      <form method="dialog"><button type="submit" class="icon-button" aria-label="Cerrar formulario">×</button></form>
+    </div>
+    <form id="checkout-form" class="checkout-form" novalidate>
+      <div class="checkout-fields">
+        <label>Nombre completo <input name="name" autocomplete="name" maxlength="100" required autofocus></label>
+        <label>Número de contacto <input type="tel" name="phone" autocomplete="tel" maxlength="26" required></label>
+        <label>Ciudad <input name="city" autocomplete="address-level2" maxlength="100" required></label>
+        <label>Entrega <select name="delivery" required></select></label>
+        <label class="field-wide" id="address-field">Dirección de entrega <input name="address" autocomplete="street-address" maxlength="180"></label>
+        <label class="field-wide">Notas adicionales (opcional) <textarea name="notes" maxlength="400" rows="2"></textarea></label>
+      </div>
+      <div id="checkout-total" class="checkout-total"></div>
+      <p class="muted">Se abrirá WhatsApp con el mensaje listo. Presiona Enviar en WhatsApp para solicitar el pedido.</p>
+      <p id="checkout-error" class="error" role="alert" hidden></p>
+      <div class="checkout-actions">
+        <button class="button button-primary" type="submit">Abrir WhatsApp <span aria-hidden="true">↗</span></button>
+        <button class="button button-secondary" type="button" id="back-to-cart">Volver al carrito</button>
+      </div>
+    </form>
+  </dialog>
+  <p class="toast" id="toast" role="status"></p>
+</body>
+</html>
